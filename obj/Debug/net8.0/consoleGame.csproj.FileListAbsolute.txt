@@ -1,0 +1,14 @@
+/home/traps/Documents/csharpt/consoleGame/bin/Debug/net8.0/consoleGame
+/home/traps/Documents/csharpt/consoleGame/bin/Debug/net8.0/consoleGame.deps.json
+/home/traps/Documents/csharpt/consoleGame/bin/Debug/net8.0/consoleGame.runtimeconfig.json
+/home/traps/Documents/csharpt/consoleGame/bin/Debug/net8.0/consoleGame.dll
+/home/traps/Documents/csharpt/consoleGame/bin/Debug/net8.0/consoleGame.pdb
+/home/traps/Documents/csharpt/consoleGame/obj/Debug/net8.0/consoleGame.GeneratedMSBuildEditorConfig.editorconfig
+/home/traps/Documents/csharpt/consoleGame/obj/Debug/net8.0/consoleGame.AssemblyInfoInputs.cache
+/home/traps/Documents/csharpt/consoleGame/obj/Debug/net8.0/consoleGame.AssemblyInfo.cs
+/home/traps/Documents/csharpt/consoleGame/obj/Debug/net8.0/consoleGame.csproj.CoreCompileInputs.cache
+/home/traps/Documents/csharpt/consoleGame/obj/Debug/net8.0/consoleGame.dll
+/home/traps/Documents/csharpt/consoleGame/obj/Debug/net8.0/refint/consoleGame.dll
+/home/traps/Documents/csharpt/consoleGame/obj/Debug/net8.0/consoleGame.pdb
+/home/traps/Documents/csharpt/consoleGame/obj/Debug/net8.0/consoleGame.genruntimeconfig.cache
+/home/traps/Documents/csharpt/consoleGame/obj/Debug/net8.0/ref/consoleGame.dll
