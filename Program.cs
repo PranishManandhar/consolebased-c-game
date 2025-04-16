@@ -6,26 +6,31 @@ namespace ConsoleApp
     {
         private Player player;
         private int daycount;
-        private int max_Distance;
 
         public Game()
         {
             player = new Player();
             daycount = 0;
-            max_Distance = 0;
         }
         public void StartGame()
         {
-
+            Console.WriteLine("Welcome to the survival game");
+            while (player.ActivitiesForDay<10)
+            {
+                Console.WriteLine($"Day {daycount+1}");
+                player.performActivities();
+                daycount++;
+            }
         }
 
     } 
 
     class Program
     {
-        void Main(string[] args)
+        static void Main(string[] args)
         {
-
+            Game game= new Game();
+            game.StartGame();
         }
 
     }

@@ -11,11 +11,19 @@ public class Player
     private int max_activities_per_day = 10;
     // object definations
     private static Random random = new Random();
+
+
+
+    public void checkweather()
+    {
+        var (weather, temp, wind, precip) = WeatherSystem.GenerateWeather();
+
+        Console.WriteLine($"Today's Weather: {weather}");
+        Console.WriteLine($"Temperature: {temp}");
+        Console.WriteLine($"WindSpeed: {wind}");
+        Console.WriteLine($"Precipitation: {precip}");
     
-
-
-    public void checkweather(){
-        var (weather,temp,wind,precip) = WeatherSystem.GenerateWeather();
+        
     }
 
 
@@ -60,16 +68,29 @@ public class Player
                 break;
         }
     }
-    public void travel()
+    public void travel((Weather weather, float temp, float wind, string precip) weatherData)
     {
+        Console.WriteLine($"Attempting to travel during {weatherData.weather} weather");
 
+        if (weatherData.temp > 40 && weatherData.wind >30){
+            Console.WriteLine("This Weather is not good to travel in.");
+            Healthpoints-=5;
+            supplies-=5;
+        }
+        else
+        {
+            Distance+=5;
+            Console.WriteLine($"you travelled 5 meters. Total Travelled Distance -> {Distance}");
+        }
     }
-    public void shop() { }
+
     public void performActivities()
     {
+        var weatherData = WeatherSystem.GenerateWeather();
+
         for (int i = 1; i <= max_activities_per_day; i++)
         {
-            Console.WriteLine("Choose an activity to perform: [1]Travel [2]Hunt [3]Rest");
+            Console.WriteLine("Choose an activity to perform: [1]Travel [2]Hunt [3]Rest [4]Check Weather");
             string? input = Console.ReadLine();
 
             if (!int.TryParse(input, out int choice))
@@ -82,13 +103,17 @@ public class Player
             switch (choice)
             {
                 case 1:
-                    travel();
+                    travel(weatherData);
                     break;
                 case 2:
                     Hunt();
                     break;
                 case 3:
                     Rest();
+                    break;
+                
+                case 4:
+                    checkweather();
                     break;
                 default:
                     Console.WriteLine("Invalid action");

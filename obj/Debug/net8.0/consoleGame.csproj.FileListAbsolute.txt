@@ -12,3 +12,4 @@
 /home/traps/Documents/csharpt/consoleGame/obj/Debug/net8.0/consoleGame.pdb
 /home/traps/Documents/csharpt/consoleGame/obj/Debug/net8.0/consoleGame.genruntimeconfig.cache
 /home/traps/Documents/csharpt/consoleGame/obj/Debug/net8.0/ref/consoleGame.dll
+/home/traps/Documents/csharpt/consoleGame/obj/Debug/net8.0/consoleGame.sourcelink.json
