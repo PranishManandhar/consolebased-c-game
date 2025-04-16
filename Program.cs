@@ -15,8 +15,9 @@ namespace ConsoleApp
         public void StartGame()
         {
             Console.WriteLine("Welcome to the survival game");
-            while (player.ActivitiesForDay<10)
+            while (player.isdead() != true)
             {
+                Console.Clear();
                 Console.WriteLine($"Day {daycount+1}");
                 player.performActivities();
                 daycount++;

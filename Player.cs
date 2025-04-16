@@ -8,25 +8,9 @@ public class Player
     public int supplies { get; set; }
     private int Distance { get; set; }
     // variables for code
-    private int max_activities_per_day = 10;
+    public int max_activities_per_day = random.Next(5, 11);
     // object definations
     private static Random random = new Random();
-
-
-
-    public void checkweather()
-    {
-        var (weather, temp, wind, precip) = WeatherSystem.GenerateWeather();
-
-        Console.WriteLine($"Today's Weather: {weather}");
-        Console.WriteLine($"Temperature: {temp}");
-        Console.WriteLine($"WindSpeed: {wind}");
-        Console.WriteLine($"Precipitation: {precip}");
-    
-        
-    }
-
-
 
     public Player()
     {
@@ -35,15 +19,21 @@ public class Player
         ActivitiesForDay = 0;
         Distance = 0;
     }
+ 
+    public void checkweather((Weather weather, float temp, float wind, string precip) weatherData)
+    {
+        Console.WriteLine($"Today's Weather: {weatherData.weather}");
+        Console.WriteLine($"Temperature: {weatherData.temp}");
+        Console.WriteLine($"WindSpeed: {weatherData.wind}");
+        Console.WriteLine($"Precipitation: {weatherData.precip}");
+    }
 
     public void Rest()
     {
+        Console.WriteLine("You Decided to take some rest");
         Healthpoints += 50;
+        supplies+=2;
         Distance += 3;
-    }
-    public void CheckStats()
-    {
-        Console.WriteLine($"HP: {Healthpoints}, Supplies: {supplies}, Distance: {Distance}, Activities Completed: {ActivitiesForDay}");
     }
     public void Hunt()
     {
@@ -79,18 +69,24 @@ public class Player
         }
         else
         {
-            Distance+=5;
-            Console.WriteLine($"you travelled 5 meters. Total Travelled Distance -> {Distance}");
+            int distanceperactivity = random.Next(1, 6);
+            Distance+=distanceperactivity;
+            supplies -= 5;
+            Console.WriteLine($"you travelled {distanceperactivity} meters. Total Travelled Distance -> {Distance}");
         }
     }
 
     public void performActivities()
     {
         var weatherData = WeatherSystem.GenerateWeather();
+        Console.WriteLine($"you can perform {max_activities_per_day} activities today");
 
         for (int i = 1; i <= max_activities_per_day; i++)
         {
-            Console.WriteLine("Choose an activity to perform: [1]Travel [2]Hunt [3]Rest [4]Check Weather");
+            Console.WriteLine($"\nActivity: {i}\n");
+            Console.WriteLine($"HP: {Healthpoints}, Supplies: {supplies}, Distance: {Distance}, Activities Completed: {ActivitiesForDay}");
+
+            Console.WriteLine("\nChoose an activity to perform: [1]Travel [2]Hunt [3]Rest [4]Check Weather");
             string? input = Console.ReadLine();
 
             if (!int.TryParse(input, out int choice))
@@ -113,7 +109,7 @@ public class Player
                     break;
                 
                 case 4:
-                    checkweather();
+                    checkweather(weatherData);
                     break;
                 default:
                     Console.WriteLine("Invalid action");
@@ -121,7 +117,6 @@ public class Player
                     continue;
             }
 
-            ActivitiesForDay++;
 
             if (Healthpoints <= 0)
             {
@@ -133,8 +128,20 @@ public class Player
             {
                 Console.WriteLine("you are out of supplies");
                 Healthpoints -= 5;
+                supplies = 0;
             }
+
+            ActivitiesForDay++;
+        
         }
     }
 
+    public bool isdead()
+    {
+        if (Healthpoints <= 0)
+        {
+            return true;
+        }
+        return false;
+    }
 }
